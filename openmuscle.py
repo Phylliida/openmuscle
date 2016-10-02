@@ -60,7 +60,7 @@ class Muscle:
     self.l_MTC = self.l_MTC_init
     
     #self.l_CE_init = scipy.optimize.fsolve(lambda x: self.getMuscleForceInit(x, self.l_MTC_init, self.q_CE_init), 0)[0]
-    self.l_CE_init = initialConditions.getl_CE_init(q)
+    self.l_CE_init = getl_CE_init(q)
     
     
     self.v_CE = 0.0
@@ -212,17 +212,11 @@ class Muscle:
         
         
         
-        
-        
-        
-        
-        
 def getl_CE_init(q):
   q = min(max(q, 0.001), 1.0)
   q *= 100
   q = round(q)
-  q /= 100
-  return initialLengths[q-1]
+  return initialLengths[int(q-1)]
   
         
         
